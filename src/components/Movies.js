@@ -9,7 +9,7 @@ var Comment = React.createClass({
           {this.props.author}
         </h3>
         <Link to={`/movie/${ this.props.id }`}>Details { this.props.id }</Link>
-        <img src={this.props.poster} width="60" />
+        <img src={this.props.poster} />
         <div>{this.props.children}</div>
       </div>
     );

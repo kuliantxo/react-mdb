@@ -18,8 +18,8 @@ const App = ({ children }) => (
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav navbar-right">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/movies">Movies</Link></li>
+            <li><Link to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</Link></li>
+            <li><Link to="/movies"><i className="fa fa-film" aria-hidden="true"></i> Movies</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/poweredby">Powered by</Link></li>
           </ul>

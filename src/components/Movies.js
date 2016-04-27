@@ -1,33 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-var Comment = React.createClass({
+var Movie = React.createClass({
   render: function() {
     return (
-      <div className="well">
-        <h3>
-          {this.props.author}
-        </h3>
-        <Link to={`/movie/${ this.props.id }`}>Details { this.props.id }</Link>
-        <img src={this.props.poster} />
-        <div>{this.props.children}</div>
+      <div className="col-sm-6">
+        <div className="media">
+          <div className="media-left">
+            <a href="#">
+              <img className="media-object" src={`http://image.tmdb.org/t/p/w185${ this.props.data.poster_path }`} />
+            </a>
+          </div>
+          <div className="media-body">
+            <h4 className="media-heading">
+              <Link to={`/movie/${ this.props.data.id }`}>{this.props.data.title}</Link>
+            </h4>
+            {this.props.data.overview}
+            <div><i className="fa fa-star" aria-hidden="true"></i> {this.props.data.vote_average}</div>
+            <div>
+              <Link to={`/movie/${ this.props.data.id }`}>More Info</Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 });
 
-var CommentList = React.createClass({
+var MovieList = React.createClass({
   render: function() {
-    var commentNodes = this.props.data.map(function(comment) {
+    var movieNodes = this.props.data.map(function(movie) {
       return (
-        <Comment author={comment.title} poster={"http://image.tmdb.org/t/p/w500"+comment.poster_path} id={comment.id}>
-          {comment.overview}
-        </Comment>
+        <Movie data={movie} />
       );
     });
     return (
-      <div className="commentList">
-        {commentNodes}
+      <div className="row">
+        {movieNodes}
       </div>
     );
   }
@@ -57,9 +66,8 @@ var Movies = React.createClass({
   },
   render: function() {
     return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox.
-        <CommentList data={this.state.data} />
+      <div className="movie-list">
+        <MovieList data={this.state.data} />
       </div>
     );
   }

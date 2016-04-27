@@ -8,7 +8,7 @@ var Detail = React.createClass({
         <h3>
           {this.props.data.title}
         </h3>
-        <img src={`http://image.tmdb.org/t/p/w500${ this.props.data.poster_path }`} />
+        <img src={`http://image.tmdb.org/t/p/w300${ this.props.data.poster_path }`} />
         <div>{ this.props.data.overview }</div>
       </div>
     );
